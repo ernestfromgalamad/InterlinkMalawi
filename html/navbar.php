@@ -50,8 +50,8 @@ if (isset($_SESSION['user_id'])) {
         <!-- Search -->
         <div class="navbar-nav align-items-center">
             <div class="nav-item d-flex align-items-center">
-                <i class="bx bx-search bx-md"></i>
-                <input type="text" class="form-control border-0 shadow-none ps-1 ps-sm-2" placeholder="Search..." aria-label="Search..." />
+                <!-- <i class="bx bx-search bx-md"></i> -->
+                <!-- <input type="text" class="form-control border-0 shadow-none ps-1 ps-sm-2" placeholder="Search..." aria-label="Search..." /> -->
             </div>
         </div>
         <!-- /Search -->
@@ -98,11 +98,11 @@ if (isset($_SESSION['user_id'])) {
             <!-- /User -->
 
             <!-- Notification Bell -->
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a href="javascript:void(0);" class="nav-link">
-                    <i class="bx bx-bell bx-md"></i> <!-- Notification bell icon -->
+                    <i class="bx bx-bell bx-md"></i> 
                 </a>
-            </li>
+            </li> -->
             <!-- /Notification Bell -->
         </ul>
     </div>

@@ -77,7 +77,7 @@ if (isset($_SESSION['user_id'])) {
       name="viewport"
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-    <title>Demo : Dashboard - Analytics | sneat - Bootstrap Dashboard PRO</title>
+    <title>InterlinkMw</title>
 
     <meta name="description" content="" />
 
@@ -101,6 +101,9 @@ if (isset($_SESSION['user_id'])) {
     <!-- Vendors CSS -->
     <link rel="stylesheet" href="../assets2/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
     <link rel="stylesheet" href="../assets2/vendor/libs/apex-charts/apex-charts.css" />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
 
     <!-- Page CSS -->
 
@@ -150,7 +153,6 @@ if (isset($_SESSION['user_id'])) {
                             <h2 class="fw-bold text-white">"Find Experts, Deliver Excellence"</h2>
                             <p class="text-white mt-4" style="font-size: 18px;">
                                 Explore the wealth of knowledge and opportunities available on our platform. 
-                               
                             </p>
                         </div>
                     </div>
@@ -160,71 +162,92 @@ if (isset($_SESSION['user_id'])) {
 
         <!-- Second Banner Row -->
         <div class="row mb-4">
-            <!-- Right Card (now full-width) -->
-            <div class="col-12">
-                <div class="card">
-                    <div class="d-flex align-items-center row">
-                        <div class="col-sm-7">
-                            <div class="card-body">
-                                <h5 class="card-title" style="color: black;" class="mb-3">Welcome Back! 😊</h5>
-                                <p class="mb-6" style="color: black;">
-                                    Make sure to keep your profile updated to maintain your visibility.<br />
-                                    It's important to showcase your latest achievements and skills to stand out on the platform. Stay connected with new opportunities and grow your network!
-                                </p>
-                                <a href="artist_account.php" class="btn btn-sm btn-outline-success">Update Profile</a>
-                            </div>
-                        </div>
-                        <div class="col-sm-5 text-center text-sm-left">
-                            <div class="card-body pb-0 px-0 px-md-6">
-                                <img src="../assets2/img/illustrations/man-with-laptop_2.png" height="175" class="scaleX-n1-rtl" alt="View Badge User" />
-                            </div>
-                        </div>
+    <!-- Right Card (now full-width) -->
+    <div class="col-12">
+        <div class="card" style="background-color:rgb(255, 238, 209);">
+            <div class="d-flex align-items-center row">
+                <div class="col-sm-7">
+                    <div class="card-body">
+                        <h5 class="card-title" style="color: black;" class="mb-3">Welcome Back to your management dashboard</h5>
+                        <p class="mb-6" style="color: black;">
+                            Make sure to keep your profile updated to maintain your visibility.<br />
+                            It's important to showcase your latest achievements and skills to stand out on the platform. Stay connected with new opportunities and grow your network!
+                        </p>
+                        <a href="artist_account.php" class="btn btn-sm btn-outline-dark">Update Profile</a>
+
+                    </div>
+                </div>
+                <div class="col-sm-5 text-center text-sm-left">
+                    <div class="card-body pb-0 px-0 px-md-6">
+                        <img src="../assets2/img/illustrations/man-with-laptop_2.png" height="175" class="scaleX-n1-rtl" alt="View Badge User" />
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+</div>
+
 
         <!-- Additional Cards with larger margin for spacing on mobile -->
-        <div class="row">
-            <div class="col-12 col-md-4 mb-4">
-                <div class="card shadow-lg border-light rounded">
-                    <div class="card-body">
-                        <h4 class="card-title" style="color: black;">What do I have on board</h4>
-                        <p class="card-text" style="color: black;">
-                            Explore a wide range of projects that match your skills and interests. Stay updated and keep an eye on the latest opportunities.
-                        </p>
-                        <a href="projects.php" class="btn btn-sm btn-outline-info">My profile</a>
-                    </div>
+<div class="row">
+    <!-- Card 1: What do I have on board -->
+    <div class="col-12 col-md-4 mb-4">
+        <div class="card shadow-lg border-light rounded" style="background-color:rgb(193, 222, 255);">
+            <div class="card-body d-flex align-items-center">
+                <div class="me-3">
+                    <i class="bi bi-briefcase-fill text-info" style="font-size: 3rem;"></i>
                 </div>
-            </div>
-            <div class="col-12 col-md-4 mb-4">
-                <div class="card shadow-lg border-light rounded">
-                    <div class="card-body">
-                        <h4 class="card-title" style="color: black;">Manage Your Services</h4>
-                        <p class="card-text" style="color: black;">
-                            Take control of the services you offer by customizing and updating them to better serve your audience. Showcase your expertise and make your offerings stand out.
-                        </p>
-                        <a href="my_services.php" class="btn btn-sm btn-outline-info">View My Services</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Share My Profile Card -->
-            <div class="col-12 col-md-4 mb-4">
-                <div class="card shadow-lg border-light rounded">
-                    <div class="card-body text-center">
-                        <h4 class="card-title" style="color: black;">Share My Profile</h4>
-                        <p class="card-text" style="color: black;">
-                            Share your artist profile with the world and showcase your talent to a wider audience.
-                        </p>
-                        <button id="shareProfileBtn" class="btn btn-sm btn-outline-primary">Share My Profile</button>
-                    </div>
+                <div>
+                    <h4 class="card-title" style="color: black;">What do I have on board</h4>
+                    <p class="card-text" style="color: black;">
+                        Explore a wide range of projects that match your skills and interests. Stay updated and keep an eye on the latest opportunities.
+                    </p>
+                    <a href="projects.php" class="btn btn-sm btn-outline-dark">My profile</a>
                 </div>
             </div>
         </div>
-
     </div>
+
+    <!-- Card 2: Manage Your Services -->
+    <div class="col-12 col-md-4 mb-4">
+        <div class="card shadow-lg border-light rounded" style="background-color:rgb(211, 255, 241);">
+            <div class="card-body d-flex align-items-center">
+                <div class="me-3">
+                    <i class="bi bi-tools text-success" style="font-size: 3rem;"></i>
+                </div>
+                <div>
+                    <h4 class="card-title" style="color: black;">Manage Your Services</h4>
+                    <p class="card-text" style="color: black;">
+                        Take control of the services you offer by customizing and updating them to better serve your audience.
+                    </p>
+                    <a href="my_services.php" class="btn btn-sm btn-outline-dark">View My Services</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Card 3: Share My Profile -->
+    <div class="col-12 col-md-4 mb-4">
+        <div class="card shadow-lg border-light rounded" style="background-color:rgb(247, 238, 177);">
+            <div class="card-body d-flex align-items-center">
+                <div class="me-3">
+                    <i class="bi bi-share-fill text-primary" style="font-size: 3rem;"></i>
+                </div>
+                <div>
+                    <h4 class="card-title" style="color: black;">Share My Profile</h4>
+                    <p class="card-text" style="color: black;">
+                        Share your profile with the world and showcase your talent to a wider audience.
+                    </p>
+                    <button id="shareProfileBtn" class="btn btn-sm btn-outline-dark">Share My Profile</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
     <!-- / Content -->
+</div>
+
 
     <!-- Modal Structure -->
     <div id="shareModal" class="modal" tabindex="-1" style="display: none;">

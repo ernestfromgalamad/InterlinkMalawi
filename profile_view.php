@@ -119,35 +119,25 @@ if (isset($_SESSION['user_id'])) {
       </a>
 
       <nav id="navmenu" class="navmenu">
-        <ul>
-          <li><a href="#hero" class="active">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#features">Features</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#pricing">Pricing</a></li>
-          <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-            <ul>
-              <li><a href="#">Dropdown 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-                <ul>
-                  <li><a href="#">Deep Dropdown 1</a></li>
-                  <li><a href="#">Deep Dropdown 2</a></li>
-                  <li><a href="#">Deep Dropdown 3</a></li>
-                  <li><a href="#">Deep Dropdown 4</a></li>
-                  <li><a href="#">Deep Dropdown 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Dropdown 2</a></li>
-              <li><a href="#">Dropdown 3</a></li>
-              <li><a href="#">Dropdown 4</a></li>
-            </ul>
-          </li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-      </nav>
-
-      <a class="btn-getstarted" href="index.html#about">Join Now!</a>
+  <ul>
+    <li><a href="index.php#hero" class="active">Home</a></li>
+    <!-- <li><a href="#about">About</a></li> -->
+    <li><a href="index.php#featured-talents">Featured Talents</a></li>
+    <li><a href="index.php#featured-services">Featured Services</a></li>
+    <li><a href="index.php#featured-projects">Explore Projects</a></li>
+    <!-- <li class="dropdown"><a href="#"><span>Resources</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+      <ul>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Help Center</a></li>
+        <li><a href="#">FAQs</a></li>
+        <li><a href="#">Tutorials</a></li>
+      </ul>
+    </li> -->
+    <li><a href="index.php#about">About</a></li>
+  </ul>
+  <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+</nav>
+      <a class="btn-getstarted" href="html/create_account_form.php">Join Now!</a>
 
     </div>
   </header>
@@ -268,10 +258,11 @@ if (isset($_GET['id'])) {
                      style="background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%); 
                             border-radius: 12px;">
                     <div class="banner-text text-center">
-                        <h1 style="color: white;">Welcome to the Artist's Page</h1>
-                        <p class="lead mb-3" style="color: #f0f0f0;">
-                            Discover amazing art and connect with the artist. Whether you're looking to purchase original works or simply admire the creativity, you're in the right place. 
-                        </p>
+                    <h1 style="color: white;">Welcome to My Page</h1>
+<p class="lead mb-3" style="color: #f0f0f0;">
+    Explore the range of specialized services I provide, designed to meet your unique needs. 
+</p>
+
                         <!-- Message Me Button with Messenger Icon -->
                         <a href="#messageModal" class="btn btn-light mt-3" data-bs-toggle="modal" data-bs-target="#messageModal">
                             <i class="fas fa-paper-plane me-2"></i>Message Me
@@ -286,8 +277,8 @@ if (isset($_GET['id'])) {
             <div class="col-12">
                 <hr>
                 <div class="container section-title" >
-    <h2>Explore Talent Profiles</h2>
-    <p>Browse through the profiles of skilled professionals offering remote job opportunities and services worldwide. Whether you're looking for creative talent, technical expertise, or business solutions, you'll find the right match for your project needs.</p>
+    <h2>My Services</h2>
+    <p>I offer a diverse array of professional services tailored to help you achieve your goals. I am committed to delivering exceptional results with every project.</p>
   </div><!-- End Section Title -->
              
                 <div class="row">
