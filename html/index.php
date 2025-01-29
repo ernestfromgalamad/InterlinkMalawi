@@ -160,21 +160,22 @@ if (isset($_SESSION['user_id'])) {
             </div>
         </div>
 
-        <!-- Second Banner Row -->
-        <div class="row mb-4">
+       <!-- Second Banner Row -->
+<div class="row mb-4">
     <!-- Right Card (now full-width) -->
     <div class="col-12">
-        <div class="card" style="background-color:rgb(255, 238, 209);">
+        <div class="card" style="background-color:rgb(255, 250, 250);">
             <div class="d-flex align-items-center row">
                 <div class="col-sm-7">
                     <div class="card-body">
-                        <h5 class="card-title" style="color: black;" class="mb-3">Welcome Back to your management dashboard</h5>
+                        <h5 class="card-title" style="color: black;" class="mb-3">Welcome Back to Your Management Dashboard</h5>
                         <p class="mb-6" style="color: black;">
-                            Make sure to keep your profile updated to maintain your visibility.<br />
-                            It's important to showcase your latest achievements and skills to stand out on the platform. Stay connected with new opportunities and grow your network!
+                            Ensure that your profile is consistently up to date to maintain a strong presence.<br />
+                            Highlight your latest achievements and skills to stand out among others. Keep connected with fresh opportunities and expand your network to foster professional growth!
                         </p>
-                        <a href="artist_account.php" class="btn btn-sm btn-outline-dark">Update Profile</a>
-
+                        <a href="artist_account.php" class="btn btn-sm btn-outline-dark">
+                            <i class="bi bi-pencil-square"></i> Update Profile
+                        </a>
                     </div>
                 </div>
                 <div class="col-sm-5 text-center text-sm-left">
@@ -187,22 +188,23 @@ if (isset($_SESSION['user_id'])) {
     </div>
 </div>
 
-
-        <!-- Additional Cards with larger margin for spacing on mobile -->
+<!-- Additional Cards with larger margin for spacing on mobile -->
 <div class="row">
     <!-- Card 1: What do I have on board -->
     <div class="col-12 col-md-4 mb-4">
-        <div class="card shadow-lg border-light rounded" style="background-color:rgb(193, 222, 255);">
+        <div class="card shadow-lg border-light rounded" style="background-color:rgb(241, 248, 255);">
             <div class="card-body d-flex align-items-center">
                 <div class="me-3">
                     <i class="bi bi-briefcase-fill text-info" style="font-size: 3rem;"></i>
                 </div>
                 <div>
-                    <h4 class="card-title" style="color: black;">What do I have on board</h4>
+                    <h4 class="card-title" style="color: black;">My Services</h4>
                     <p class="card-text" style="color: black;">
-                        Explore a wide range of projects that match your skills and interests. Stay updated and keep an eye on the latest opportunities.
+                        Showcase the diverse services you offer. Let your audience explore the value you bring with your expertise and offerings.
                     </p>
-                    <a href="projects.php" class="btn btn-sm btn-outline-dark">My profile</a>
+                    <a href="my_services.php" class="btn btn-sm btn-outline-dark">
+                        <i class="bi bi-hand-thumbs-up"></i> My Services
+                    </a>
                 </div>
             </div>
         </div>
@@ -210,17 +212,19 @@ if (isset($_SESSION['user_id'])) {
 
     <!-- Card 2: Manage Your Services -->
     <div class="col-12 col-md-4 mb-4">
-        <div class="card shadow-lg border-light rounded" style="background-color:rgb(211, 255, 241);">
+        <div class="card shadow-lg border-light rounded" style="background-color:rgb(237, 255, 249);">
             <div class="card-body d-flex align-items-center">
                 <div class="me-3">
                     <i class="bi bi-tools text-success" style="font-size: 3rem;"></i>
                 </div>
                 <div>
-                    <h4 class="card-title" style="color: black;">Manage Your Services</h4>
+                    <h4 class="card-title" style="color: black;">My Projects</h4>
                     <p class="card-text" style="color: black;">
-                        Take control of the services you offer by customizing and updating them to better serve your audience.
+                        Take command of your previous projects, manage them effectively, and share them with your audience to demonstrate your ongoing success.
                     </p>
-                    <a href="my_services.php" class="btn btn-sm btn-outline-dark">View My Services</a>
+                    <a href="my_projects.php" class="btn btn-sm btn-outline-dark">
+                        <i class="bi bi-gear-fill"></i> My Projects
+                    </a>
                 </div>
             </div>
         </div>
@@ -228,7 +232,7 @@ if (isset($_SESSION['user_id'])) {
 
     <!-- Card 3: Share My Profile -->
     <div class="col-12 col-md-4 mb-4">
-        <div class="card shadow-lg border-light rounded" style="background-color:rgb(247, 238, 177);">
+        <div class="card shadow-lg border-light rounded" style="background-color:rgb(255, 252, 231);">
             <div class="card-body d-flex align-items-center">
                 <div class="me-3">
                     <i class="bi bi-share-fill text-primary" style="font-size: 3rem;"></i>
@@ -236,14 +240,17 @@ if (isset($_SESSION['user_id'])) {
                 <div>
                     <h4 class="card-title" style="color: black;">Share My Profile</h4>
                     <p class="card-text" style="color: black;">
-                        Share your profile with the world and showcase your talent to a wider audience.
+                        Expand your reach by sharing your profile. Allow others to view your expertise and connect with you for collaborative opportunities.
                     </p>
-                    <button id="shareProfileBtn" class="btn btn-sm btn-outline-dark">Share My Profile</button>
+                    <button id="shareProfileBtn" class="btn btn-sm btn-outline-dark">
+                        <i class="bi bi-share"></i> Share My Profile
+                    </button>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 
     <!-- / Content -->
 </div>
@@ -284,7 +291,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Event listener for "Share My Profile" button
     shareButton.addEventListener("click", function () {
         const baseUrl = window.location.origin; // Get the current domain
-        const shareableLink = `${baseUrl}/ArtPromo/landing/profile_view.php?id=${userId}`;
+        const shareableLink = `${baseUrl}/interlink/profile_view.php?id=${userId}`;
         profileLinkInput.value = shareableLink; // Set the link in the input field
         modal.style.display = "block"; // Show modal
     });

@@ -50,6 +50,9 @@ if (!isset($_SESSION['user_id'])) {
     <link rel="stylesheet" href="../assets2/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
     <link rel="stylesheet" href="../assets2/vendor/libs/apex-charts/apex-charts.css" />
 
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+
     <!-- Page CSS -->
 
     <!-- Helpers -->
@@ -85,16 +88,24 @@ if (!isset($_SESSION['user_id'])) {
         <div class="row">
             <!-- Welcome Message and Steps -->
             <div class="col-12 mb-4">
-                <div class="card shadow-sm">
-                    <div class="card-body">
-                        <h4 class="card-title text-primary">Welcome, <?php echo htmlspecialchars($username); ?>! 🎉</h4>
-                        <p class="card-text">
-                            The key to your success on our platform lies in the reputation you build through your work and engagement with clients. We’ve put together a few helpful tips and resources to help you become a top performer and grow your career.
-                        </p>
-                        <a href="add_service_form.php" class="btn btn-primary btn-lg shadow-sm">Create New Service</a>
-                    </div>
-                </div>
-            </div>
+    <div class="card shadow-sm border-0"
+         style="background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
+                border-radius: 12px;">
+        <div class="card-body">
+    <h4 class="card-title text-white">
+        YOUR SERVICES
+    </h4>
+    <p class="card-text text-white" style="font-size: 18px;">
+        Showcase the diverse services you offer. Let your audience explore the value you bring with your expertise and offerings.
+    </p>
+    <a href="add_service_form.php" class="btn btn-light btn-lg shadow-sm">
+        <i class="fas fa-plus-circle"></i> Create New Service
+    </a>
+</div>
+
+    </div>
+</div>
+
         </div>
 
         <div class="row">

@@ -147,53 +147,54 @@ if (isset($_SESSION['user_id'])) {
     
 
 
-<?php
-// Include your database connection
+  <?php
+// Include database connection
 include 'db.php';
 
+// Check if the token is provided in the URL
+if (!isset($_GET['token'])) {
+    die("Invalid access.");
+}
 
+$token = $_GET['token'];
 
-// Get the artist ID from the URL (e.g., shared_profile_2.php?id=1)
-if (isset($_GET['id'])) {
-    $artist_id = $_GET['id'];
+try {
+    // Validate token and fetch artist details
+    $sql = "SELECT a.* FROM artists a 
+            JOIN profile_sharing p ON a.id = p.user_id 
+            WHERE p.token = :token";
+    
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(['token' => $token]);
 
-    // Query to fetch artist details from the database for the given artist_id
-    try {
-        $sql = "SELECT * FROM artists WHERE id = :artist_id"; // Using artist_id in the WHERE clause
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute(['artist_id' => $artist_id]);
+    // Check if data was fetched
+    if ($stmt->rowCount() > 0) {
+        $artist = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        // Check if data was fetched
-        if ($stmt->rowCount() > 0) {
-            $artist = $stmt->fetch(PDO::FETCH_ASSOC);
-
-            // Assign fetched values to variables for display
-            $first_name = sanitize($artist['first_name']);
-            $last_name = sanitize($artist['last_name']);
-            $email = sanitize($artist['email']);
-            $phone_number = sanitize($artist['phone_number']);
-            $biography = sanitize($artist['biography']);
-            $genre = sanitize($artist['genre']);
-            $portfolio = sanitize($artist['portfolio']);
-            $social_media = sanitize($artist['social_media']);
-            $achievements = sanitize($artist['achievements']);
-            $address = sanitize($artist['address']);
-            $country = sanitize($artist['country']);
-            $currency = sanitize($artist['currency']);
-            $profile_picture = sanitize($artist['profile_picture']);
-            $education = sanitize($artist['education']);
-            $expertise = sanitize($artist['expertise']);
-            $awards = sanitize($artist['awards']);
-            $skills = sanitize($artist['skills']);
-            $projects = sanitize($artist['projects']);
-        } else {
-            echo "Artist not found.";
-        }
-    } catch (PDOException $e) {
-        echo "Error: " . $e->getMessage();
+        // Assign fetched values to variables for display
+        $first_name = sanitize($artist['first_name']);
+        $last_name = sanitize($artist['last_name']);
+        $email = sanitize($artist['email']);
+        $phone_number = sanitize($artist['phone_number']);
+        $biography = sanitize($artist['biography']);
+        $genre = sanitize($artist['genre']);
+        $portfolio = sanitize($artist['portfolio']);
+        $social_media = sanitize($artist['social_media']);
+        $achievements = sanitize($artist['achievements']);
+        $address = sanitize($artist['address']);
+        $country = sanitize($artist['country']);
+        $currency = sanitize($artist['currency']);
+        $profile_picture = sanitize($artist['profile_picture']);
+        $education = sanitize($artist['education']);
+        $expertise = sanitize($artist['expertise']);
+        $awards = sanitize($artist['awards']);
+        $skills = sanitize($artist['skills']);
+        $projects = sanitize($artist['projects']);
+    } else {
+        die("Invalid or expired link.");
     }
-} else {
-    echo "Artist ID not provided.";
+} catch (PDOException $e) {
+    die("Error: " . $e->getMessage());
 }
 ?>
 
@@ -273,42 +274,64 @@ if (isset($_GET['id'])) {
         </div>
 
         <!-- Services Section -->
-        <div class="row">
-            <div class="col-12">
-                <hr>
-                <div class="container section-title" >
-                    <h2>My Services</h2>
-                    <p>I offer a diverse array of professional services tailored to help you achieve your goals. I am committed to delivering exceptional results with every project.</p>
-                </div><!-- End Section Title -->
-             
-                <div class="row g-4">
-                    <?php
-                    // Fetching services offered by the artist
-                    $stmt = $pdo->prepare("SELECT * FROM services WHERE user_id = :user_id ORDER BY created_at DESC");
-                    $stmt->execute(['user_id' => $artist['id']]);
+        <!-- Services Section -->
+<div class="row">
+    <div class="col-12">
+        <hr>
+        <div class="container section-title" >
+            <h2>My Services</h2>
+            <p>I offer a diverse array of professional services tailored to help you achieve your goals. I am committed to delivering exceptional results with every project.</p>
+        </div><!-- End Section Title -->
+     
+        <div class="row g-4">
+            <?php
+            // Fetching services offered by the artist
+            $stmt = $pdo->prepare("SELECT * FROM services WHERE user_id = :user_id ORDER BY created_at DESC");
+            $stmt->execute(['user_id' => $artist['id']]);
 
-                    while ($service = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                        $service_name = htmlspecialchars($service['service_name']);
-                        $service_description = htmlspecialchars($service['service_description']);
-                        $service_media = htmlspecialchars($service['service_media']);
-                        $pricing = htmlspecialchars($service['pricing']);
-                        $delivery_time = htmlspecialchars($service['delivery_time']);
-                    ?>
-                        <div class="col-12 col-md-4 col-lg-3 mb-4">
-                            <div class="service-card shadow-sm h-100">
-                                <img src="html/<?php echo $service_media; ?>" class="img-fluid" alt="Service Image" style="height: 200px; object-fit: cover;">
-                                <div class="service-card-body p-3">
-                                    <h5 class="text-primary"><?php echo $service_name; ?></h5>
-                                    <p><?php echo $service_description; ?></p>
-                                    <p><strong>Price:</strong> $<?php echo $pricing; ?></p>
-                                    <p><strong>Delivery Time:</strong> <?php echo $delivery_time; ?> hours</p>
-                                </div>
+            while ($service = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                $service_name = htmlspecialchars($service['service_name']);
+                $service_description = htmlspecialchars($service['service_description']);
+                $service_media = htmlspecialchars($service['service_media']);
+                $pricing = htmlspecialchars($service['pricing']);
+                $delivery_time = htmlspecialchars($service['delivery_time']);
+            ?>
+                <div class="col-12 col-md-4 col-lg-3 mb-4">
+                    <div class="service-card shadow-sm h-100">
+                        <!-- Image with Modal Trigger -->
+                        <div class="position-relative">
+                            <img src="html/<?php echo $service_media; ?>" class="img-fluid" alt="Service Image" style="height: 200px; object-fit: cover;" data-bs-toggle="modal" data-bs-target="#serviceImageModal<?php echo $service['service_id']; ?>">
+                        </div>
+
+                        <!-- Service Card Body -->
+                        <div class="service-card-body p-3">
+                            <h5 class="text-primary"><?php echo $service_name; ?></h5>
+                            <p><?php echo $service_description; ?></p>
+                            <p><strong>Price:</strong> $<?php echo $pricing; ?></p>
+                            <p><strong>Delivery Time:</strong> <?php echo $delivery_time; ?> hours</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal for Image Full View -->
+                <div class="modal fade" id="serviceImageModal<?php echo $service['service_id']; ?>" tabindex="-1" aria-labelledby="serviceImageModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="serviceImageModalLabel"><?php echo $service_name; ?></h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body text-center">
+                                <img src="html/<?php echo $service_media; ?>" class="img-fluid" alt="Full Service Image">
                             </div>
                         </div>
-                    <?php } ?>
+                    </div>
                 </div>
-            </div>
+            <?php } ?>
         </div>
+    </div>
+</div>
+
     </div>
 
     <!-- Message Modal -->

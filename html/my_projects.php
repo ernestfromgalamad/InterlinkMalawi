@@ -25,7 +25,7 @@ if (!isset($_SESSION['user_id'])) {
       name="viewport"
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-    <title>Demo : Dashboard - Analytics | sneat - Bootstrap Dashboard PRO</title>
+    <title>Intelink-User_dashboard</title>
 
     <meta name="description" content="" />
 
@@ -40,6 +40,9 @@ if (!isset($_SESSION['user_id'])) {
       rel="stylesheet" />
 
     <link rel="stylesheet" href="../assets2/vendor/fonts/boxicons.css" />
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
 
     <!-- Core CSS -->
     <link rel="stylesheet" href="../assets2/vendor/css/core.css" class="template-customizer-core-css" />
@@ -85,16 +88,24 @@ if (!isset($_SESSION['user_id'])) {
         <div class="row">
             <!-- Welcome Message and Steps -->
             <div class="col-12 mb-4">
-                <div class="card shadow-sm">
-                    <div class="card-body">
-                        <h4 class="card-title text-primary">Welcome, <?php echo htmlspecialchars($username); ?>! 🎉</h4>
-                        <p class="card-text">
-                            The key to your success on our platform lies in the reputation you build through your work and engagement with clients. We’ve put together a few helpful tips and resources to help you become a top performer and grow your career.
-                        </p>
-                        <a href="add_projects_form.php" class="btn btn-primary btn-lg shadow-sm">Create New Project</a>
-                    </div>
-                </div>
-            </div>
+    <div class="card shadow-sm border-0"
+         style="background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
+                border-radius: 12px;">
+       <div class="card-body">
+    <h4 class="card-title text-white">
+    YOUR PROJECTS
+    </h4>
+    <p class="card-text text-white" style="font-size: 18px;">
+        Take command of your previous projects, manage them effectively, and share them with your audience to demonstrate your ongoing success.
+    </p>
+    <a href="add_projects_form.php" class="btn btn-light btn-lg shadow-sm">
+        <i class="fas fa-plus-square"></i>  Create New Project
+    </a>
+</div>
+
+    </div>
+</div>
+
         </div>
 
         <div class="row">

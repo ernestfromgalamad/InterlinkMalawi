@@ -48,13 +48,13 @@ if (isset($_SESSION['user_id'])) {
 
     <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
         <!-- Search -->
-        <div class="navbar-nav align-items-center">
-            <div class="nav-item d-flex align-items-center">
-                <!-- <i class="bx bx-search bx-md"></i> -->
-                <!-- <input type="text" class="form-control border-0 shadow-none ps-1 ps-sm-2" placeholder="Search..." aria-label="Search..." /> -->
-            </div>
-        </div>
-        <!-- /Search -->
+<div class="navbar-nav align-items-center">
+    <div class="nav-item d-flex align-items-center">
+        <input type="text" id="searchInput" class="form-control border-0 shadow-none ps-1 ps-sm-2"  />
+    </div>
+</div>
+<!-- /Search -->
+
 
         <ul class="navbar-nav flex-row align-items-center ms-auto">
             <!-- User -->
@@ -107,3 +107,49 @@ if (isset($_SESSION['user_id'])) {
         </ul>
     </div>
 </nav>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+    const sentences = [
+        "Looking for something?",
+        "Find what you need!",
+        "Search for your favorite items.",
+        "Explore our latest products.",
+        "Type to search...",
+    ];
+
+    let sentenceIndex = 0;
+    let charIndex = 0;
+    const searchInput = document.getElementById("searchInput");
+    const typingSpeed = 100; // Typing speed in milliseconds
+    const eraseSpeed = 50;  // Erasing speed in milliseconds
+    const pauseDuration = 1000; // Duration to pause before typing the next sentence
+
+    function typeSentence() {
+        const currentSentence = sentences[sentenceIndex];
+        if (charIndex < currentSentence.length) {
+            searchInput.value += currentSentence.charAt(charIndex);
+            charIndex++;
+            setTimeout(typeSentence, typingSpeed);
+        } else {
+            setTimeout(eraseSentence, pauseDuration);
+        }
+    }
+
+    function eraseSentence() {
+        const currentSentence = sentences[sentenceIndex];
+        if (charIndex > 0) {
+            searchInput.value = currentSentence.substring(0, charIndex - 1);
+            charIndex--;
+            setTimeout(eraseSentence, eraseSpeed);
+        } else {
+            sentenceIndex = (sentenceIndex + 1) % sentences.length;
+            setTimeout(typeSentence, pauseDuration);
+        }
+    }
+
+    // Start the typing effect
+    typeSentence();
+});
+
+</script>
